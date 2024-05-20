@@ -13,7 +13,7 @@ MySQL에서 careerdoctor 스키마 생성 후 실행해야 한다.
   - 커밋 타이틀 첫 문자는 대문자로 작성한다.
   - 제목은 명령문으로 사용하며 과거형을 사용하지 않는다.
   - 2️⃣의 커밋 타입을 작성한다.
-  - 예시 : 🎉Begin a Project, Feat. 회원가입 API 작성
+  - 예시 : Feat. 회원가입 API 작성
  
 
 #### 2️⃣ 커밋 타입
@@ -64,8 +64,8 @@ MySQL에서 careerdoctor 스키마 생성 후 실행해야 한다.
         <td>코드 포맷팅, 세미콜론 누락, 코드 변경이 없는 경우</td>
     </tr>
       <tr>
-        <td>CI</td>
-        <td>CI 관련 설정 수정</td>
+        <td>Remove</td>
+        <td>코드나 파일 삭제</td>
     </tr>
 </table>
 

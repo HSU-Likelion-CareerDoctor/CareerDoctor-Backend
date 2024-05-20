@@ -1,6 +1,6 @@
 package com.homepage.careerdoctor.util.exception;
 
-import com.example.account.util.response.CustomApiResponse;
+import com.homepage.careerdoctor.util.response.CustomApiResponse;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.context.support.DefaultMessageSourceResolvable;

@@ -1,6 +1,6 @@
 package com.homepage.careerdoctor.util.controller;
 
-import com.example.account.util.response.CustomApiResponse;
+import com.homepage.careerdoctor.util.response.CustomApiResponse;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.boot.web.servlet.error.ErrorController;

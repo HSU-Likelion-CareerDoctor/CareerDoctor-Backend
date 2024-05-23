@@ -1,9 +1,6 @@
 # CareerDoctor-Backend
 [2024 Boogieton]CareerDoctor Server
 
-#### 📝 실행 전 설정
-MySQL에서 careerdoctor 스키마 생성 후 실행해야 한다.
-<br> <br>
 
 ### 📢 커밋 <br>
 #### 1️⃣ 커밋 룰

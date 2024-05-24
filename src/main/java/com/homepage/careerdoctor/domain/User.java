@@ -1,4 +1,4 @@
-package com.homepage.careerdoctor.user.domain;
+package com.homepage.careerdoctor.domain;
 
 import com.homepage.careerdoctor.util.entity.BaseEntity;
 import jakarta.persistence.*;

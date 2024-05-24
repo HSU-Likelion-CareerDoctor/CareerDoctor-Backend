@@ -1,13 +1,12 @@
 package com.homepage.careerdoctor.user.service;
 
-import com.homepage.careerdoctor.user.domain.User;
+import com.homepage.careerdoctor.domain.User;
 import com.homepage.careerdoctor.user.dto.UserSigninDto;
 import com.homepage.careerdoctor.user.dto.UserSignupDto;
 import com.homepage.careerdoctor.user.repository.UserRepository;
 import com.homepage.careerdoctor.util.response.CustomApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

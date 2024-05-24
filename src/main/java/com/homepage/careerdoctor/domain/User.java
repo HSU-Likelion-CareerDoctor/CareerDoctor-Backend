@@ -58,4 +58,5 @@ public class User extends BaseEntity {
 
     @Embedded
     private Degree degree;
+
 }

@@ -48,14 +48,14 @@ public class User extends BaseEntity {
     private List<Activity> activities;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Career> careers;//
+    private List<Career> careers;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Language> languages;//
+    private List<Language> languages;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Certificate> certificates;//
+    private List<Certificate> certificates;
 
     @Embedded
-    private Degree degree;//
+    private Degree degree;
 }

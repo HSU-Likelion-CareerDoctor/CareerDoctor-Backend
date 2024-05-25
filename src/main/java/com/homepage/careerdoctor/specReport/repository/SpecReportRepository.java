@@ -9,5 +9,4 @@ import java.util.Optional;
 public interface SpecReportRepository extends JpaRepository<SpecReport, Long> {
 
     Optional<SpecReport> findByReportId(Long reportId);
-    Optional<Review> findByUserId(String UserId); // 아이디를 사용해 리뷰 찾기
 }

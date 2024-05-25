@@ -4,6 +4,8 @@ import com.homepage.careerdoctor.util.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Entity
 @Getter
 @Builder
@@ -16,7 +18,13 @@ public class Need extends BaseEntity {
     @Column(name = "need")
     private Long needId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "report_id")
     private SpecReport specReport;
+
+    @ElementCollection(targetClass = NeedSpec.class)
+    @CollectionTable(name = "need_specs", joinColumns = @JoinColumn(name = "need_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "need_spec")
+    private List<NeedSpec> needSpecs;
 }

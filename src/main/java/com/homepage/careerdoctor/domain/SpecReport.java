@@ -30,6 +30,6 @@ public class SpecReport extends BaseEntity {
     @OneToOne(mappedBy = "specReport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Review review;
 
-    @OneToMany(mappedBy = "need", cascade = CascadeType.ALL)
-    private List<Need> needs;
+    @OneToOne(mappedBy = "specReport", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Need need;
 }

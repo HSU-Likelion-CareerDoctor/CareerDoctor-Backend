@@ -1,5 +1,6 @@
 package com.homepage.careerdoctor.specReport.controller;
 
+import com.homepage.careerdoctor.review.dto.ReviewWriteDto;
 import com.homepage.careerdoctor.specReport.dto.SpecReportWriteDto;
 import com.homepage.careerdoctor.specReport.service.SpecReportServiceImpl;
 import com.homepage.careerdoctor.util.response.CustomApiResponse;
@@ -19,8 +20,9 @@ public class SpecReportController {
     private final SpecReportServiceImpl specReportService;
 
     @PostMapping("/write-report") // 소견서 작성
-    private ResponseEntity<CustomApiResponse<?>> signup(@Valid @RequestBody SpecReportWriteDto dto) {
+    private ResponseEntity<CustomApiResponse<?>> writeReport(@Valid @RequestBody SpecReportWriteDto dto) {
 
         return specReportService.writeReport(dto);
     }
+
 }

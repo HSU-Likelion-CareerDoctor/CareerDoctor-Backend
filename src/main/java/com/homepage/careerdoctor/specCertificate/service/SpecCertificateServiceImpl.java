@@ -61,11 +61,11 @@ public class SpecCertificateServiceImpl implements SpecCertificateService {
 
 
             // userId가 있는 SpecCertificate
-            foundUser.builder()
+            /*foundUser.builder()
                     .user(foundUser)
 
                     .build();
-            specRepository.save(createSpecCertificate);
+            specRepository.save(createSpecCertificate);*/
 
 
         }

@@ -1,5 +1,6 @@
 package com.homepage.careerdoctor.specReport.dto;
 
+import com.homepage.careerdoctor.domain.Need;
 import com.homepage.careerdoctor.domain.NeedSpec;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotEmpty;
@@ -24,13 +25,10 @@ public class SpecReportWriteDto {
     @Size(min = 1, message = "필요한 스펙을 1개 이상 선택해주세요.")
     private List<NeedSpec> needSpecs;
 
-<<<<<<< HEAD
-=======
 //    public Need toEntity() {
 //        return Need.builder()
 //                .needName(needSpecs)
 //                .build();
 //    }
 
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 }

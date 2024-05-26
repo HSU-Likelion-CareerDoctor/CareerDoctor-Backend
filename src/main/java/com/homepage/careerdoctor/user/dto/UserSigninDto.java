@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 
 @Getter @Setter
 @NoArgsConstructor

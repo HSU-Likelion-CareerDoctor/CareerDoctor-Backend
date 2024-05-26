@@ -11,24 +11,6 @@ import java.util.List;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-<<<<<<< HEAD
-@Table(name = "NEEDSPECS")
-public class Need extends BaseEntity {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "need")
-    private Long needId;
-
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "report_id")
-    private SpecReport specReport;
-
-    @ElementCollection(targetClass = NeedSpec.class)
-    @CollectionTable(name = "need_specs", joinColumns = @JoinColumn(name = "need_id"))
-    @Enumerated(EnumType.STRING)
-    @Column(name = "need_spec")
-    private List<NeedSpec> needSpecs;
-=======
 @Table(name = "NEED")
 public class Need extends BaseEntity {
 
@@ -46,5 +28,4 @@ public class Need extends BaseEntity {
 
     @Enumerated(EnumType.STRING)
     private NeedName needName;
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 }

@@ -9,28 +9,6 @@ import lombok.*;
 @Builder
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-<<<<<<< HEAD
-@Table(name = "ETCS")
-public class Etc extends BaseEntity {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "etc_id")
-    private Long etcId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "spec_id")
-    private SpecCertificate specCertificate;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private User user;
-
-    @Column(name = "etc_name")
-    private String etcName;
-
-
-
-
-=======
 @Table(name = "ETC")
 public class Etc extends BaseEntity {
 
@@ -50,5 +28,4 @@ public class Etc extends BaseEntity {
     private String etcName;
 
 
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 }

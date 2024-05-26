@@ -1,5 +1,6 @@
 package com.homepage.careerdoctor.specReport.repository;
 
+import com.homepage.careerdoctor.domain.Review;
 import com.homepage.careerdoctor.domain.SpecReport;
 import org.springframework.data.jpa.repository.JpaRepository;
 

@@ -9,23 +9,12 @@ import lombok.Setter;
 
 import java.util.ArrayList;
 
-<<<<<<< HEAD
-@Getter @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class CertificateSpecDto {
-    private String userId; // service로 넘김
-
-    @NotEmpty(message = "이름을 입력해주세요.")
-    private String name;
-=======
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CertificateSpecDto {
     private String userId;
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 
     @NotEmpty(message = "생일을 입력해주세요.")
     private String birth;
@@ -60,16 +49,7 @@ public class CertificateSpecDto {
     private String activityName;
 
     @NotEmpty(message = "언어를 입력해주세요.")
-<<<<<<< HEAD
-    private LanguageName languageName;
-
-    @NotEmpty(message = "언어 레벨을 입력해주세요.")
-    private LanguageLevel languageLevel;
-
-    //private Language language;
-=======
     private ArrayList<String> language;
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
 
     @NotEmpty(message = "경력을 입력해주세요.")
     private ArrayList<Career> careers;

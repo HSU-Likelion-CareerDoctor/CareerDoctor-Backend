@@ -19,12 +19,7 @@ public class SpecCertificateController {
 
     // 스펙 작성하기
     @PostMapping("/write-spec")
-<<<<<<< HEAD
-    private ResponseEntity<CustomApiResponse<?>> sertificateSpec(@Valid @RequestBody CertificateSpecDto dto) {
-        return specCertificateService.sertificateSpec(dto);
-=======
     private ResponseEntity<CustomApiResponse<?>> certificateSpec(@Valid @RequestBody CertificateSpecDto dto) {
         return specCertificateService.certificateSpec(dto);
->>>>>>> c409ef801c076c8eec75cec332331871119f061d
     }
 }

@@ -26,10 +26,4 @@ public class Career extends BaseEntity {
 
     @Column(name = "CAREER_NAME")
     private String careerName;
-
-    @Column(name = "CAREER_START")
-    private String careerStart;
-
-    @Column(name = "CAREER_END")
-    private String careerEnd;
 }

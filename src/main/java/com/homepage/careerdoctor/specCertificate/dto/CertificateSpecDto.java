@@ -16,6 +16,9 @@ import java.util.ArrayList;
 public class CertificateSpecDto {
     private String userId;
 
+    @NotEmpty(message = "이름을 입력해주세요.")
+    private String name;
+
     @NotEmpty(message = "생일을 입력해주세요.")
     private String birth;
 
@@ -48,8 +51,8 @@ public class CertificateSpecDto {
     private ArrayList<String> activity;
     private String activityName;
 
-    @NotEmpty(message = "언어를 입력해주세요.")
-    private ArrayList<String> language;
+    @NotEmpty(message = "언어 이름를 입력해주세요.")
+    private ArrayList<Language> language;
 
     @NotEmpty(message = "경력을 입력해주세요.")
     private ArrayList<Career> careers;

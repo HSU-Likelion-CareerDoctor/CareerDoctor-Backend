@@ -24,9 +24,6 @@ public class Language extends BaseEntity {
     @JoinColumn(name = "MEMBER_ID")
     private User user;
 
-    @Enumerated(EnumType.STRING)
-    private LanguageName languageName;
-
-    @Enumerated(EnumType.STRING)
-    private LanguageLevel languageLevel;
+    @Column(name = "LANGUAGE_NAME")
+    private String language;
 }

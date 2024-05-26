@@ -44,19 +44,22 @@ public class CertificateSpecDto {
     private Double avgCredit;
 
     @NotEmpty(message = "보유 자격증을 입력해주세요.")
-    private ArrayList<String> certificate;
+    private ArrayList<Certificate> certificates;
     private String certificateName;
 
     @NotEmpty(message = "대외활동을 입력해주세요.")
-    private ArrayList<String> activity;
+    private ArrayList<Activity> activities;
     private String activityName;
 
     @NotEmpty(message = "언어 이름를 입력해주세요.")
-    private ArrayList<Language> language;
+    private ArrayList<Language> languages;
+    private String languageName;
 
     @NotEmpty(message = "경력을 입력해주세요.")
     private ArrayList<Career> careers;
+    private String careerName;
 
     @NotEmpty(message = "기타를 입력해주세요.")
-    private String etc;
+    private ArrayList<Etc> etcs;
+    private String etcName;
 }

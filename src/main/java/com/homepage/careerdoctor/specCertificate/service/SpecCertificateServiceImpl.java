@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,9 +35,11 @@ public class SpecCertificateServiceImpl implements SpecCertificateService {
             GraduateDiv graduateDiv = certificateSpecDto.getGraduateDiv();
             String major = certificateSpecDto.getMajor();
             Double avgCredit = certificateSpecDto.getAvgCredit();
-            String etc = certificateSpecDto.getEtc();
-            ArrayList<Language> language = certificateSpecDto.getLanguage();
-
+            ArrayList<Certificate> certificates = certificateSpecDto.getCertificates();
+            ArrayList<Activity> activities = certificateSpecDto.getActivities();
+            ArrayList<Language> languages = certificateSpecDto.getLanguages();
+            ArrayList<Career> careers = certificateSpecDto.getCareers();
+            ArrayList<Etc> etcs = certificateSpecDto.getEtcs();
 
             // 보유 자격증, 대외활동, 경력사항도 똑같ㅇㅣ..
 
@@ -49,8 +52,9 @@ public class SpecCertificateServiceImpl implements SpecCertificateService {
                     .user(null)
                     .name(name)
                     .birth(birth)
+                    .schoolDiv(schoolDiv)
                     .gender(gender)
-                    .languages(language)
+                    .languages(languages)
                     .build();
             specRepository.save(createNoUserIdSpecCertificate);
 

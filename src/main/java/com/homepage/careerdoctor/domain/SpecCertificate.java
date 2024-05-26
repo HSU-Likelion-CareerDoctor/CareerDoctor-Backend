@@ -4,6 +4,7 @@ import com.homepage.careerdoctor.util.entity.BaseEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -38,19 +39,19 @@ public class SpecCertificate extends BaseEntity {
     private Degree degree;
 
     @OneToMany(mappedBy = "specCertificate")
-    private List<Certificate> certificates;
+    private ArrayList<Certificate> certificates;
 
     @OneToMany(mappedBy = "specCertificate")
-    private List<Activity> activities;
+    private ArrayList<Activity> activities;
 
     @OneToMany(mappedBy = "specCertificate")
-    private List<Language> languages;
+    private ArrayList<Language> languages;
 
     @OneToMany(mappedBy = "specCertificate")
-    private List<Career> careers;
+    private ArrayList<Career> careers;
 
     @OneToMany(mappedBy = "specCertificate")
-    private List<Etc> etcs;
+    private ArrayList<Etc> etcs;
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")

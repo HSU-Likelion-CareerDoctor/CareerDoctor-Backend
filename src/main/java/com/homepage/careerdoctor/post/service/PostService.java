@@ -16,4 +16,8 @@ public interface PostService {
     ResponseEntity<CustomApiResponse<?>> modifyPost(String userId, Long postId, PostModifyRequestDto.Req req);
 
     ResponseEntity<CustomApiResponse<?>> deletePost(PostDeleteRequestDto dto);
+
+    ResponseEntity<CustomApiResponse<?>> getPostDeatail(Long postId);
+
+    ResponseEntity<CustomApiResponse<?>> plusVoteCount(Long voteId);
 }

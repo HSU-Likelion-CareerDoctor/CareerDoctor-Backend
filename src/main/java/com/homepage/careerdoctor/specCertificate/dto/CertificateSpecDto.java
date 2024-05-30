@@ -28,6 +28,7 @@ public class CertificateSpecDto {
     private Gender gender;
 
     // 학력
+    @NotNull(message = "학력을 입력해주세요.")
     private SchoolDiv schoolDiv;
 
     // 입학년월

@@ -27,6 +27,10 @@ public class PostController {
         return postService.getPosts();
     }
 
+    @GetMapping("/posts/{postId}")
+    private ResponseEntity<CustomApiResponse<?>> getPostDetail(@PathVariable Long postId) {
+        return postService.getPostDeatail(postId);}
+
     @GetMapping("/{userId}/myposts")
     private ResponseEntity<CustomApiResponse<?>> getMyPost(@PathVariable String userId) {
         return postService.getMyPost(userId);
@@ -35,6 +39,11 @@ public class PostController {
     @PutMapping("/posts/{userId}/{postId}")
     private ResponseEntity<CustomApiResponse<?>> modifyPost(@PathVariable String userId, @PathVariable Long postId, @RequestBody PostModifyRequestDto.Req req) {
         return postService.modifyPost(userId, postId, req);
+    }
+
+    @PutMapping("/plusVoteCount/{voteId}")
+    private ResponseEntity<CustomApiResponse<?>> plusVoteCount(@PathVariable Long voteId) {
+        return postService.plusVoteCount(voteId);
     }
 
     @DeleteMapping("/posts")

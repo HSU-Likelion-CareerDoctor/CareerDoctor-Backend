@@ -5,6 +5,7 @@ import com.homepage.careerdoctor.domain.User;
 import com.homepage.careerdoctor.domain.Vote;
 import com.homepage.careerdoctor.post.dto.*;
 import com.homepage.careerdoctor.post.repostitory.PostRepository;
+import com.homepage.careerdoctor.post.repostitory.VoteRepository;
 import com.homepage.careerdoctor.user.repository.UserRepository;
 import com.homepage.careerdoctor.util.response.CustomApiResponse;
 import jakarta.transaction.Transactional;
@@ -13,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +26,7 @@ import java.util.stream.Collectors;
 public class PostServiceImpl implements PostService{
     private final PostRepository postRepository;
     private final UserRepository userRepository;
+    private final VoteRepository voteRepository;
 
     @Override // 게시글(투표글) 작성
     public ResponseEntity<CustomApiResponse<?>> writePost(PostWriteRequestDto requestDto) {
@@ -73,6 +76,8 @@ public class PostServiceImpl implements PostService{
         List<Post> posts = postRepository.findAll();
 
         List<PostListDto.PostResponse> postResponses = new ArrayList<>();
+        int totalCount = 0;
+        int n = 0;
         for (Post post : posts) {
             postResponses.add(PostListDto.PostResponse.builder()
                     .userId(post.getUser().getUserId())
@@ -80,10 +85,36 @@ public class PostServiceImpl implements PostService{
                     .postContent(post.getPostContent())
                     .createdAt(post.getCreatedAt())
                     .vote(post.getVotes())
-                    .likeCount(post.getLikeds().size())
-                    .scrapCount(post.getScraps().size())
                     .build());
+
+            n++;
         }
+
+        for (int i = 0; i < posts.size(); i++) {
+            List<Vote> votes = posts.get(i).getVotes();
+            totalCount = 0;
+
+            // 첫 번째 루프에서 총 투표 수 계산
+            for (int j = 0; j < votes.size(); j++) {
+                totalCount += votes.get(j).getVoteCount();
+            }
+
+            // 두 번째 루프에서 퍼센트 계산
+            if (totalCount > 0) {
+                for (int j = 0; j < votes.size(); j++) {
+                    double percent = ((double) votes.get(j).getVoteCount() / totalCount) * 100;
+                    DecimalFormat df = new DecimalFormat("#.##");
+                    double formattedPercent = Double.parseDouble(df.format(percent));
+                    votes.get(j).changePercent(formattedPercent);
+                }
+            } else {
+                for (int j = 0; j < votes.size(); j++) {
+                    votes.get(j).changePercent(0);
+                }
+            }
+        }
+
+
         // 사용자에게 반환하기위한 최종 데이터
         return ResponseEntity.status(201)
                 .body(CustomApiResponse.createSuccess(201, postResponses, "게시글 목록을 성공적으로 불러왔습니다."));
@@ -165,5 +196,61 @@ public class PostServiceImpl implements PostService{
 
         return ResponseEntity.status(201)
                 .body(CustomApiResponse.createSuccess(201, null, "게시글이 삭제되었습니다."));
+    }
+
+    @Override
+    public ResponseEntity<CustomApiResponse<?>> getPostDeatail(Long postId) {
+        // 게시글을 찾는다
+        Optional<Post> findPost = postRepository.findById(postId);
+
+        PostListDto.PostResponse postResponse = new PostListDto.PostResponse();
+
+        postResponse = postResponse.builder()
+                .userId(findPost.get().getUser().getUserId())
+                .postTitle(findPost.get().getPostTitle())
+                .postContent(findPost.get().getPostContent())
+                .createdAt(findPost.get().getCreatedAt())
+                .vote(findPost.get().getVotes())
+                .build();
+
+        return ResponseEntity.status(201)
+                .body(CustomApiResponse.createSuccess(201, postResponse, "게시글 상세보기를 성공했습니다."));
+
+
+    }
+
+    @Override
+    public ResponseEntity<CustomApiResponse<?>> plusVoteCount(Long voteId) {
+
+        Vote findVote = voteRepository.findById(voteId).get();
+        Long postId = findVote.getPost().getPostId();
+        int count = voteRepository.findById(voteId).get().getVoteCount();
+        count++;
+        findVote.changeVoteCount(count);
+
+        int totalCount = 0;
+
+        List<Vote> allVotes = postRepository.findByPostId(postId).get().getVotes();
+        for (Vote vote : allVotes) {
+            totalCount += vote.getVoteCount();
+        }
+
+        for (Vote vote : allVotes) {
+            double percent = (double) vote.getVoteCount() / totalCount * 100;
+
+            DecimalFormat df = new DecimalFormat("#.##");
+            double formattedPercent = Double.parseDouble(df.format(percent));
+            vote.changePercent(formattedPercent);
+
+            voteRepository.save(vote);
+        }
+
+        VoteCountResponseDto dto = VoteCountResponseDto.builder()
+                .postId(postId)
+                .voteCount(count)
+                .build();
+
+        return ResponseEntity.status(201)
+                .body(CustomApiResponse.createSuccess(201, dto, "투표 수가 1 증가하였습니다."));
     }
 }
